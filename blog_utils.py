@@ -46,7 +46,7 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r'midia\tax_logo.jpg')):
 
     # shutil.copy(cover_image, PATH_TO_CONTENT)
     if not os.path.exists(path_to_new_content):
-        with open(path_to_new_content, 'w') as f:
+        with open(path_to_new_content, 'w', encoding='utf-8') as f:
             f.write("<!DOCTYPE html>\n")
             f.write("<html>\n")
             f.write("<head>\n")
