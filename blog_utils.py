@@ -85,7 +85,7 @@ def write_to_index(path_to_new_content):
     novo_paragrafo.append(link_to_new_blog)
     last_link.insert_after(novo_paragrafo)
 
-    with open(PATH_TO_BLOG / "index.html", 'w') as f:
+    with open(PATH_TO_BLOG / "index.html", 'w', encoding='utf-8') as f:
         f.write(str(soup.prettify(formatter='html')))
 
 novo_conteudo = create_new_blog('Titulo Teste', textos.ANTIGUIDADE)
