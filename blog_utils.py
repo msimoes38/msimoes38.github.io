@@ -106,11 +106,12 @@ def write_to_index(titulo, path_to_new_content):
 
 def create_prompt(titulo):
     prompt = f"""Blog Direito Tributário
-    Estou fazendo um texto para o meu blog sobre a história da tributação.
-    Poderia fazer um artigo com o seguinte título: {titulo}
+    Texto para o meu blog sobre a história da tributação.
+    Título do artigo: {titulo}
     As informações devem ser fidedignas. 
-    Sempre que possível, as fontes das informações (livros, artigos e respectivos autores) devem ser citadas (desde que realmente existentes).
-    Por favor, gere apenas os parágrafos do texto com a tag HTML correspondente (<p></p>)
+    Sempre que possível, citar expressamente as fontes das informações (livros, artigos e respectivos autores, no formato ABNT - desde que realmente existentes).
+    Gere apenas os parágrafos do texto com a tag HTML correspondente (<p></p>)
+    Texto:
     """
     return prompt
 
