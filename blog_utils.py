@@ -73,7 +73,7 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r"midia\tax_logo.jpg")):
             print("Blog created")
 
             return path_to_new_content"""
-    
+        
     if not os.path.exists(path_to_new_content):
         with open(path_to_new_content, "w", encoding="utf-8") as f:
             f.write("<!DOCTYPE html>\n")
@@ -83,6 +83,7 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r"midia\tax_logo.jpg")):
             f.write("""
                 body {
                     font-family: Arial, sans-serif;
+                    font-size: calc(1em + 1vw);  /* Adapta o tamanho da fonte à largura da tela */
                 }
                 img {
                     max-width: 50%;
@@ -92,6 +93,7 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r"midia\tax_logo.jpg")):
                 }
                 h1 {
                     color: #333;
+                    font-size: calc(1.5em + 1.5vw);  /* Título maior que o texto normal */
                 }
                 .container {
                     width: 90%;
@@ -110,7 +112,9 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r"midia\tax_logo.jpg")):
 
             f.write("<body>\n")
             f.write("<div class='container'>\n")
-            f.write("<a href='../index.html'>Voltar para a página inicial</a> <br />\n")
+            f.write(
+                "<a href='../index.html'>Voltar para a página inicial</a> <br />\n"
+            )
             f.write(f"<h1> {titulo} </h1>")
             f.write(conteudo)
             f.write("</div>\n")
