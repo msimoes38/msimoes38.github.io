@@ -7,6 +7,7 @@ import string
 import random
 import openai
 from git import Repo
+import git
 from bs4 import BeautifulSoup as Soup
 import textos
 
@@ -16,6 +17,7 @@ PATH_TO_BLOG = PATH_TO_BLOG_REPO.parent
 PATH_TO_CONTENT = PATH_TO_BLOG / "content"
 PATH_TO_CONTENT.mkdir(exist_ok=True, parents=True)
 
+# git.cmd.Git.AUTO_GC = False
 
 def update_blog(commit_message='atualizacao blog'):
     """
