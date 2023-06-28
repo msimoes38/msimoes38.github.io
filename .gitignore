@@ -1,3 +1,5 @@
 blog_env
 .env
 senhas.py
+.vscode
+__pycache__

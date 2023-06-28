@@ -63,7 +63,7 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r"midia\tax_logo.jpg")):
             f.write("<body>\n")
             # f.write(f"<img src='{cover_image.name}' alt='Cover Image'> <br />\n") # forma original do curso (leva em consideração que a imagem está na mesma pasta do conteudo.)
             f.write(
-                f"<img src='../{cover_image}' alt='Cover Image' width='50'> <br />\n"
+                f"<img src='../{cover_image}' alt='Cover Image' width='50'> <a href='../index.html'>Voltar para a página inicial</a> <br />\n"
             )
             f.write(f"<h1> {titulo} </h1>")
             # f.write(conteudo.replace("\n", "<br />\n")) # desncessário, pois vou pedir no prompt que texto retorne com as tags <p>
