@@ -110,9 +110,7 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r"midia\tax_logo.jpg")):
 
             f.write("<body>\n")
             f.write("<div class='container'>\n")
-            f.write(
-                f"<img src='../{cover_image}' alt='Cover Image'> <a href='../index.html'>Voltar para a página inicial</a> <br />\n"
-            )
+            f.write("<a href='../index.html'>Voltar para a página inicial</a> <br />\n")
             f.write(f"<h1> {titulo} </h1>")
             f.write(conteudo)
             f.write("</div>\n")
