@@ -17,7 +17,7 @@ PATH_TO_BLOG = PATH_TO_BLOG_REPO.parent
 PATH_TO_CONTENT = PATH_TO_BLOG / "content"
 PATH_TO_CONTENT.mkdir(exist_ok=True, parents=True)
 
-git.cmd.Git.AUTO_GC = False
+# git.cmd.Git.AUTO_GC = False
 
 def update_blog(commit_message='atualizacao blog'):
     """
@@ -28,7 +28,8 @@ def update_blog(commit_message='atualizacao blog'):
     repo.index.commit(commit_message)
     origin = repo.remote(name='origin')
     origin.push()
-
+    repo.git.gc(auto=True)  # Executar coleta de lixo
+    
 def create_new_blog(titulo, conteudo, cover_image=Path(r'midia\tax_logo.jpg')):
     """
     Gera um novo "blog" em um arquivo HTML na pasta content
