@@ -73,7 +73,7 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r"midia\tax_logo.jpg")):
             print("Blog created")
 
             return path_to_new_content"""
-        
+    # Escreve o código HTML
     if not os.path.exists(path_to_new_content):
         with open(path_to_new_content, "w", encoding="utf-8") as f:
             f.write("<!DOCTYPE html>\n")
@@ -83,7 +83,7 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r"midia\tax_logo.jpg")):
             f.write("""
                 body {
                     font-family: Arial, sans-serif;
-                    font-size: calc(1em + 1vw);  /* Adapta o tamanho da fonte à largura da tela */
+                    font-size: calc(min(max(16px, 4vw), 22px));  /* Adapta o tamanho da fonte à largura da tela entre 16px e 22px */
                 }
                 img {
                     max-width: 50%;
@@ -93,7 +93,7 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r"midia\tax_logo.jpg")):
                 }
                 h1 {
                     color: #333;
-                    font-size: calc(1.5em + 1.5vw);  /* Título maior que o texto normal */
+                    font-size: calc(min(max(24px, 6vw), 30px));  /* Título maior que o texto normal entre 24px e 30px */
                 }
                 .container {
                     width: 90%;
@@ -113,7 +113,7 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r"midia\tax_logo.jpg")):
             f.write("<body>\n")
             f.write("<div class='container'>\n")
             f.write(
-                "<a href='../index.html'>Voltar para a página inicial</a> <br />\n"
+                f"<img src='../{cover_image}' alt='Cover Image'> <a href='../index.html'>Voltar para a página inicial</a> <br />\n"
             )
             f.write(f"<h1> {titulo} </h1>")
             f.write(conteudo)
@@ -123,7 +123,7 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r"midia\tax_logo.jpg")):
             print("Blog created")
 
             return path_to_new_content
-    
+
     else:
         raise FileExistsError(f"O arquivo {path_to_new_content} já existe!")
 
