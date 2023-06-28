@@ -104,10 +104,11 @@ def write_to_index(titulo, path_to_new_content):
         f.write(str(soup.prettify(formatter="html")))
 
 
-def create_prompt(titulo):
+def create_prompt(titulo, resumo='dissertar de acordo com o Título'):
     prompt = f"""Blog Direito Tributário
     Texto para o meu blog sobre a história da tributação.
     Título do artigo: {titulo}
+    Resumo: {resumo}
     As informações devem ser fidedignas. 
     Sempre que possível, citar expressamente as fontes das informações (livros, artigos e respectivos autores, no formato ABNT - desde que realmente existentes).
     Gere apenas os parágrafos do texto com a tag HTML correspondente (<p></p>)
@@ -118,9 +119,14 @@ def create_prompt(titulo):
 
 if __name__ == "__main__":
     titulo = input("Digite o título: ")
+    resumo = input("Digite um breve resumo sobre o que deseja: ")
+    if len(resumo) > 2:
+        prompt = create_prompt(titulo, resumo)
+    else:
+        prompt = create_prompt(titulo) 
     resposta_texto = openai.Completion.create(
         model="text-davinci-003",
-        prompt=create_prompt(titulo),
+        prompt=prompt,
         max_tokens=2000,
         temperature=0.7,
     )
