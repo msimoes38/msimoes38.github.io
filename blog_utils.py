@@ -98,7 +98,8 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r"midia\tax_logo.jpg")):
             f.write(f"<h1> {titulo} </h1>")
             f.write(conteudo)
             f.write("</div>\n")
-            f.write(f"<div class='prompt'> {prompt} </div>\n")  # Div com o texto em letras miúdas
+            f.write("<br>")
+            f.write(f"<div class='prompt'><i>Modelo: text-davinci-003 / Prompt: <p> {prompt.replace('<p></p>', '&lt;p&gt;&lt;/p&gt;')} </p> </i></div>\n")  # Div com o texto em letras miúdas
             f.write("</body>\n")
             f.write("</html>\n")
             print("Blog created")
