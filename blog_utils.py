@@ -99,7 +99,7 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r"midia\tax_logo.jpg")):
             f.write(conteudo)
             f.write("</div>\n")
             f.write("<br>")
-            f.write(f"<div class='prompt'><i>Modelo: text-davinci-003 / Prompt: <p> {prompt.replace('<p></p>', '&lt;p&gt;&lt;/p&gt;')} </p> </i></div>\n")  # Div com o texto em letras miúdas
+            f.write(f"<div class='prompt'><i>Modelo: text-davinci-003. <p> Prompt: {prompt.replace('<p></p>', '&lt;p&gt;&lt;/p&gt;')} </p> </i></div>\n")  # Div com o texto em letras miúdas
             f.write("</body>\n")
             f.write("</html>\n")
             print("Blog created")
@@ -138,13 +138,13 @@ def write_to_index(titulo, path_to_new_content):
 
 
 def create_prompt(titulo, resumo='dissertar de acordo com o Título'):
-    prompt = f"""Blog sobre Direito Tributário
+    prompt = f"""Blog sobre Direito Tributário.
     Artigo sobre a História da Tributação.
-    Título do artigo: {titulo}
-    Resumo: {resumo}
+    Título do artigo: {titulo}.
+    Resumo: {resumo}.
     As informações devem ser fidedignas. 
     Incluir citações expressas das fontes das informações (livros, artigos e respectivos autores, no formato ABNT - desde que realmente existentes).
-    Gere apenas os parágrafos do texto com a tag HTML correspondente (<p></p>)
+    Gere apenas os parágrafos do texto com a tag HTML correspondente (<p></p>).
     Texto: ...
     """
     return prompt
