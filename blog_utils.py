@@ -75,6 +75,11 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r"midia\tax_logo.jpg")):
                     margin: auto;
                     max-width: 800px;
                 }
+                .prompt {
+                    font-size: 12px;  /* Tamanho da fonte do texto em letras miúdas */
+                    color: #666;  /* Cor do texto em letras miúdas */
+                    margin-top: 20px;  /* Espaço acima do texto em letras miúdas */
+                }
                 @media (max-width: 800px) {
                     .container {
                         width: 100%;
@@ -93,6 +98,7 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r"midia\tax_logo.jpg")):
             f.write(f"<h1> {titulo} </h1>")
             f.write(conteudo)
             f.write("</div>\n")
+            f.write(f"<div class='prompt'> {prompt} </div>\n")  # Div com o texto em letras miúdas
             f.write("</body>\n")
             f.write("</html>\n")
             print("Blog created")
@@ -131,14 +137,14 @@ def write_to_index(titulo, path_to_new_content):
 
 
 def create_prompt(titulo, resumo='dissertar de acordo com o Título'):
-    prompt = f"""Blog Direito Tributário
-    Texto para o meu blog sobre a história da tributação.
+    prompt = f"""Blog sobre Direito Tributário
+    Artigo sobre a História da Tributação.
     Título do artigo: {titulo}
     Resumo: {resumo}
     As informações devem ser fidedignas. 
-    Sempre que possível, citar expressamente as fontes das informações (livros, artigos e respectivos autores, no formato ABNT - desde que realmente existentes).
+    Incluir citações expressas das fontes das informações (livros, artigos e respectivos autores, no formato ABNT - desde que realmente existentes).
     Gere apenas os parágrafos do texto com a tag HTML correspondente (<p></p>)
-    Texto:
+    Texto: ...
     """
     return prompt
 
