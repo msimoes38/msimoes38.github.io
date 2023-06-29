@@ -23,8 +23,6 @@ PATH_TO_BLOG = PATH_TO_BLOG_REPO.parent
 PATH_TO_CONTENT = PATH_TO_BLOG / "content"
 PATH_TO_CONTENT.mkdir(exist_ok=True, parents=True)
 
-# git.cmd.Git.AUTO_GC = False
-
 
 def update_blog(commit_message="atualizacao blog"):
     """
@@ -51,29 +49,6 @@ def create_new_blog(titulo, conteudo, cover_image=Path(r"midia\tax_logo.jpg")):
     novo_titulo = f"Post_{files + 1}_{agora_string}.html"
     path_to_new_content = PATH_TO_CONTENT / novo_titulo
 
-    # Escreve o código HTML
-    """    if not os.path.exists(path_to_new_content):
-        with open(path_to_new_content, "w", encoding="utf-8") as f:
-            f.write("<!DOCTYPE html>\n")
-            f.write("<html>\n")
-            f.write("<head>\n")
-            f.write(f"<title> {titulo} </title>\n")
-            f.write("</head>\n")
-
-            f.write("<body>\n")
-            # f.write(f"<img src='{cover_image.name}' alt='Cover Image'> <br />\n") # forma original do curso (leva em consideração que a imagem está na mesma pasta do conteudo.)
-            f.write(
-                f"<img src='../{cover_image}' alt='Cover Image' width='50'> <a href='../index.html'>Voltar para a página inicial</a> <br />\n"
-            )
-            f.write(f"<h1> {titulo} </h1>")
-            # f.write(conteudo.replace("\n", "<br />\n")) # desncessário, pois vou pedir no prompt que texto retorne com as tags <p>
-            f.write(conteudo)
-            f.write("</body>\n")
-            f.write("</html>\n")
-            print("Blog created")
-
-            return path_to_new_content"""
-    # Escreve o código HTML
     if not os.path.exists(path_to_new_content):
         with open(path_to_new_content, "w", encoding="utf-8") as f:
             f.write("<!DOCTYPE html>\n")
