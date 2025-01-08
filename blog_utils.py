@@ -12,7 +12,8 @@ S_OPENAI = "OPENAI"
 OPENAI_USU_ENV = S_OPENAI + "_USUARIO"
 senhas.armazenar_senha(S_OPENAI)
 USUARIO_OPEN_AI = os.environ[OPENAI_USU_ENV]
-openai.api_key = keyring.get_password(S_OPENAI, USUARIO_OPEN_AI)
+# openai.api_key = keyring.get_password(S_OPENAI, USUARIO_OPEN_AI)
+chave_api = keyring.get_password(S_OPENAI, USUARIO_OPEN_AI)
 
 
 # Definindo os Paths
@@ -138,14 +139,13 @@ def write_to_index(titulo, path_to_new_content):
 
 
 def create_prompt(titulo, resumo='dissertar de acordo com o Título'):
-    prompt = f"""Blog sobre Direito Tributário.
-    Artigo sobre a História da Tributação.
+    prompt = f"""Tenho um Blog sobre Direito Tributário.
+    Quero escrever um Artigo sobre a História da Tributação, da seguinte forma.
     Título do artigo: {titulo}.
     Resumo: {resumo}.
     As informações devem ser fidedignas. 
     Incluir citações expressas das fontes das informações (livros, artigos e respectivos autores, no formato ABNT - desde que realmente existentes).
     Gere apenas os parágrafos do texto com a tag HTML correspondente (<p></p>).
-    Texto: ...
     """
     return prompt
 
@@ -157,14 +157,24 @@ if __name__ == "__main__":
         prompt = create_prompt(titulo, resumo)
     else:
         prompt = create_prompt(titulo) 
-    resposta_texto = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=prompt,
+
+    client = openai.OpenAI(
+        api_key=chave_api,  # this is also the default, it can be omitted
+    )
+
+    resposta_texto = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {
+                "role": "user",
+                "content": prompt,
+            }
+        ],
         max_tokens=2000,
         temperature=0.7,
     )
 
-    texto_conteudo = resposta_texto["choices"][0]["text"]
+    texto_conteudo = resposta_texto.choices[0].message.content
     novo_conteudo = create_new_blog(titulo, texto_conteudo)
     write_to_index(titulo, novo_conteudo)
     update_blog()
