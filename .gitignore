@@ -1,5 +1,3 @@
 blog_env
 .env
-senhas.py
-.doc_prompts.docx
 __pycache__
