@@ -122,7 +122,7 @@ def write_to_index(titulo, path_to_new_content):
     Insere o link do novo blog em Index
     """
     with open(PATH_TO_BLOG / "index.html", "r", encoding="utf-8") as index:
-        soup = Soup(index.read())
+        soup = Soup(index.read(), 'html.parser')
     links = soup.find_all("a")
     last_link = links[-1]
 
