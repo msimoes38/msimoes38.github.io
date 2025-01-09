@@ -142,19 +142,19 @@ def write_to_index(titulo, path_to_new_content, setor):
     # Atualizar o índice principal
     with open(PATH_TO_BLOG / "index.html", "r", encoding="utf-8") as index:
         soup = BeautifulSoup(index.read(), "html.parser")
-    links = soup.find_all("a")
-    last_link = links[-1] if links else None
+    links_p = soup.find_all("p", attrs={'link': 'true'})
+    last_link_p = links_p[-1] if links_p else None
 
     setor_index_path = PATH_TO_CONTENT / setor / "index.html"
     setor_relative_path = str(Path("content") / setor / "index.html").replace("\\", "/")
 
-    if not any(link.get("href") == setor_relative_path for link in links):
+    if not any(link.get("href") == setor_relative_path for link in links_p):
         link_to_setor = soup.new_tag("a", href=setor_relative_path)
         link_to_setor.string = setor
-        novo_paragrafo = soup.new_tag("p")
+        novo_paragrafo = soup.new_tag("p", attrs={"link": "true"})
         novo_paragrafo.append(link_to_setor)
-        if last_link:
-            last_link.insert_after(novo_paragrafo)
+        if last_link_p:
+            last_link_p.insert_after(novo_paragrafo)
         else:
             soup.body.append(novo_paragrafo)
 
