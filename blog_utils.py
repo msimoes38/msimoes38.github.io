@@ -37,7 +37,7 @@ def update_blog(commit_message="atualizacao blog"):
     """
     Adiciona as alterações no repositório ao Github
     """
-    repo = Repo(PATH_TO_BLOG_REPO)
+    repo = Repo(PATH_TO_BLOG_REPO) # noqa
     repo.git.add(all=True)
     repo.index.commit(commit_message)
     origin = repo.remote(name="origin")
