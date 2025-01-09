@@ -3,7 +3,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 import openai
-from git import Repo
+# from git import Repo
 from bs4 import BeautifulSoup
 from tkinter import filedialog, Tk
 import keyring
@@ -20,7 +20,7 @@ chave_api = keyring.get_password(S_OPENAI, USUARIO_OPEN_AI)
 
 # Definindo os Paths
 PATH_TO_BLOG_REPO = Path(
-    r"C:\Users\msimo\OneDrive\Documents\Dev\msimoes38.github.io\.git"
+    r".git"
 )
 PATH_TO_BLOG = PATH_TO_BLOG_REPO.parent
 PATH_TO_CONTENT = PATH_TO_BLOG / "content"
@@ -316,4 +316,3 @@ if __name__ == "__main__":
         
     novo_conteudo = create_new_blog(titulo, texto_conteudo, setor)
     write_to_index(titulo, novo_conteudo, setor)
-    # update_blog()
